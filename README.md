@@ -1,31 +1,32 @@
-Coinvoy API - C# Client Library
+
+TAKASCOIN PAYMENT API - PHP Client Library
 ================================
 
-C# client library for Coinvoy API
+PHP client library for Takascoin API
 
 
-##About Coinvoy
+##About Takascoin
 
-Coinvoy is an online payment processor for Bitcoin. It's objective is to provide an easiest yet the most secure way to accept Bitcoin.
+Takascoin is an online Bitcoin exchange platform. Takascoin is also a payment services provider for merchants.
 
 ##Get started
 
-Just include CoinvoyAPIClient project to your solution and manage invoice pretty easily
+Just include TakascoinAPIClient project to your solution and manage invoice pretty easily
 
 ```
 
-using CoinvoyAPI;
+using TakascoinAPI;
 
-var cv = new Coinvoy();
+var takas = new Takascoin();
+
+string apiKey = "takas@email"
 
 Dictionary<string, string> options = new Dictionary<string, string>();
-    options.Add("email", "your@email");
-    options.Add("provider", "Your Service/Company");
     options.Add("item", "Item description");
     options.Add("description", "Payment Description");
-    options.Add("escrow", "true");
+    options.Add("callback", "http://yourcallback/ipn");
 
-var invoiceResultObj = cv.invoice("0.001", "1JZbrknYYEEySTJSrsrECg4vpmitZ1s8wb", "BTC", options);
+var invoiceResultObj = takas.payment("10", apiKey, options);
 
 if (invoiceResultObj.success)
 {
@@ -35,18 +36,11 @@ if (invoiceResultObj.success)
 Console.WriteLine("Invoice ID : " + invoiceResultObj.id);
 Console.WriteLine("Invoice payment address is : " + invoiceResultObj.address);
 Console.WriteLine("Invoice payment url is : " + invoiceResultObj.url);
-Console.WriteLine("Invoice escrow key is : " + invoiceResultObj.key);
 Console.WriteLine("Invoice default html : " + invoiceResultObj.html);
 
-var escrowResultObj = cv.freeEscrow("3DXVLSJMOFAXF2ZJIGIFN27WHPZDXSDQY6ZCYL2VYN4HYHNE4OXA73YLKNYSY6B46CQDLDCM63QVG===");
-Console.WriteLine("Free escrow result is: " + escrowResultObj.success);
-if (escrowResultObj.success)
-{
-    Console.WriteLine("Free Escrow: OK");
-}
 
 Console.WriteLine("Getting invoice information: " + invoiceResultObj.id);
-var invoiceObj = cv.getInvoice(invoiceResultObj.id);
+var invoiceObj = takas.getInvoice(invoiceResultObj.id);
 Console.WriteLine("Invoice payment address is: " + invoiceObj.address);
 if (invoiceObj.success)
 {
@@ -54,3 +48,8 @@ if (invoiceObj.success)
 }
 
 ```
+Your feedback and suggestions are very much welcome. Please contact info@takascoin.com for any input. 
+
+Enjoy!
+
+Takascoin
