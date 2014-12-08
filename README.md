@@ -2,7 +2,7 @@
 TAKASCOIN PAYMENT API - PHP Client Library
 ================================
 
-PHP client library for Takascoin API
+C# client library for Takascoin API
 
 
 ##About Takascoin
