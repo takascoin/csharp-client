@@ -116,9 +116,9 @@ namespace TakascoinAPI
             var text = encoding.GetBytes(orderID + ":" + invoiceID);
             var key = encoding.GetBytes(secret);
             var sha256 = new HMACSHA256(key);
-            var signature = BitConverter.ToString(sha256.ComputeHash(text));
+            var signature = BitConverter.ToString(sha256.ComputeHash(text)).Replace("-", string.Empty).ToLower();
 
-            if(hash == signature)
+            if(hash.ToLower() == signature)
             {
                 return true;
             }
