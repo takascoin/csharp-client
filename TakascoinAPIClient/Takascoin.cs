@@ -42,7 +42,8 @@ namespace TakascoinAPI
             string result = String.Empty;
             using (var client = new WebClient())
             {
-                client.Headers.Add("Content-Type", "application/json");
+                client.Headers.Add("Content-Type", "application/json; charset=utf-8;");
+                client.Encoding = Encoding.UTF8; ;
                 result = client.UploadString(URL_COMMON_BASE + "invoice", "POST", json);
             }
 
@@ -81,7 +82,8 @@ namespace TakascoinAPI
             string result = String.Empty;
             using (var client = new WebClient())
             {
-                client.Headers.Add("Content-Type", "application/json");
+                client.Headers.Add("Content-Type", "application/json; charset=utf-8;");
+                client.Encoding = Encoding.UTF8; ;
                 result = client.UploadString(URL_BASE + "payment", "POST", json);
             }
 
@@ -100,7 +102,8 @@ namespace TakascoinAPI
             string result = String.Empty;
             using (var client = new WebClient())
             {
-                client.Headers.Add("Content-Type", "application/json");
+                client.Headers.Add("Content-Type", "application/json; charset=utf-8;");
+                client.Encoding = Encoding.UTF8; ;
                 result = client.UploadString(URL_BASE + "button", "POST", json);
             }
 
